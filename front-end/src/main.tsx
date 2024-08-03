@@ -9,20 +9,26 @@ import Create from "./pages/create";
 import PageNotFound from "./pages/pageNotFound";
 import LandingPage from "./pages/landingPage";
 import Layout from "./components/layout";
+import PrivateRoute from "./components/privateRoute";
+import { AuthProvider } from "./components/privateRoute/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route element={<Layout />}>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/search" element={<Search />} />
-                    <Route path="/create" element={<Create />} />
-                    <Route path="*" element={<PageNotFound />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    </React.StrictMode>
+  <React.StrictMode>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route element={<PrivateRoute />}>
+            <Route element={<Layout />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/create" element={<Create />} />
+            </Route>
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  </React.StrictMode>
 );
