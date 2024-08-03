@@ -47,9 +47,9 @@ const LandingPage = () => {
         id="password-input"
         className="user-info"
       />
-      <input id="login" type="submit" onClick={() => {}}>
-        Login
-      </input>
+      <button id="login" type="submit">
+        Log in
+      </button>
       <Button id="signup" onClick={NavigateSignUp}>
         Sign Up
       </Button>
