@@ -4,12 +4,22 @@ interface InputProps {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   id?: string;
-  className?: string; // Optional className
+  className?: string;
+  title?: string;
 }
 
-const Input: React.FC<InputProps> = ({ value, onChange, id, className }) => {
+const Input: React.FC<InputProps> = ({
+  value,
+  onChange,
+  id,
+  className,
+  title,
+}) => {
   return (
-    <input value={value} onChange={onChange} id={id} className={className} />
+    <>
+      <h2>{title}</h2>
+      <input value={value} onChange={onChange} id={id} className={className} />
+    </>
   );
 };
 
