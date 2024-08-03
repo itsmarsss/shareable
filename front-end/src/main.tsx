@@ -8,18 +8,20 @@ import Profile from "./pages/profile";
 import Search from "./pages/search";
 import Create from "./pages/create";
 import PageNotFound from "./pages/pageNotFound";
+import LandingPage from "./pages/landingPage";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
-        <Nav />
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/create" element={<Create />} />
-                <Route path="*" element={<PageNotFound />} />
+                <Route path="/" element={<LandingPage />} />
+                <Route element={<Nav />}>
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/search" element={<Search />} />
+                    <Route path="/create" element={<Create />} />
+                    <Route path="*" element={<PageNotFound />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     </React.StrictMode>
