@@ -1,0 +1,7 @@
+{
+    "watch": ["src/**/*", "build/**/*"],
+    "ignore": ["dist/**/*"],
+    "ext": "js,jsx,ts,tsx,html,css",
+    "exec": "tsc && node dist/server.js",
+    "verbose": true
+}

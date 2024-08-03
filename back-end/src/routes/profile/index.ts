@@ -1,6 +1,7 @@
-const express = require("express");
+import express from "express";
+import dotenv from "dotenv";
 
-require("dotenv").config();
+dotenv.config();
 
 const router = express.Router();
 

@@ -36,7 +36,11 @@ const startServer = async () => {
         res.sendFile(path.join(__dirname, "..", "build", "index.html"));
     });
 
-    app.listen(3000);
+    const port = 3000;
+
+    app.listen(port);
+
+    console.log(`Server started on port ${port} [http://localhost:${port}]`);
 };
 
 startServer();
