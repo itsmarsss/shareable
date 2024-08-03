@@ -10,13 +10,13 @@ import PageNotFound from "./pages/pageNotFound";
 import LandingPage from "./pages/landingPage";
 import Layout from "./components/layout";
 import PrivateRoute from "./components/privateRoute";
-import { AuthProvider } from "./components/privateRoute/AuthProvider";
+import { AuthProvider } from "./components/authProvider";
 import SignUp from "./pages/signUp";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <Routes>
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/" element={<LandingPage />} />
@@ -30,7 +30,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
