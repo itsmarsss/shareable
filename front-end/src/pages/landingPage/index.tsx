@@ -12,22 +12,23 @@ const LandingPage = () => {
   };
 
   return (
-      <div className="panel">
-        <input
-          value={userName}
-          onChange={handleChange}
-          id="username-input"
-          className="user-info"
-        />
-        <input
-          value={password}
-          onChange={handleChange}
-          id="password-input"
-          className="user-info"
-        />
-        <button id="login">Login</button>
-        <button id="signup">Sign Up</button>
-      </div>
+    <div className="panel">
+      <h1>Welcome to our website (change later)</h1>
+      <input
+        value={userName}
+        onChange={handleChange}
+        id="username-input"
+        className="user-info"
+      />
+      <input
+        value={password}
+        onChange={handleChange}
+        id="password-input"
+        className="user-info"
+      />
+      <button id="login">Login</button>
+      <button id="signup">Sign Up</button>
+    </div>
   );
 };
 
