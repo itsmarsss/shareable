@@ -9,13 +9,15 @@ import Create from "./pages/create";
 import PageNotFound from "./pages/pageNotFound";
 import LandingPage from "./pages/landingPage";
 import Layout from "./components/layout";
+import PrivateRoute from "./components/privateRoute";
+import { AuthProvider } from "./components/privateRoute/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
         <Route element={<Layout />}>
+          <Route path="/" element={<LandingPage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/search" element={<Search />} />
