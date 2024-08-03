@@ -1,0 +1,7 @@
+{
+    "watch": ["src/**/*", "public/**/*", "index.html"],
+    "ignore": ["dist/**/*"],
+    "ext": "js,jsx,ts,tsx,html,css",
+    "exec": "npm run build",
+    "verbose": true
+}
