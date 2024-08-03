@@ -14,17 +14,21 @@ import { AuthProvider } from "./components/privateRoute/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/create" element={<Create />} />
+          <Route element={<PrivateRoute />}>
+            <Route element={<Layout />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/create" element={<Create />} />
+            </Route>
+          </Route>
           <Route path="*" element={<PageNotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 );

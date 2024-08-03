@@ -16,7 +16,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [user] = useState<undefined | User>(undefined);
-  const [token] = useState(localStorage.getItem('token') || '');
+  const [token] = useState(localStorage.getItem('token') || 'token'); // replace 'token' with ''
 
   
   const signIn = () => {
