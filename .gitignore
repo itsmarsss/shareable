@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 
-back-end/build/**/*
+back-end/build/*
