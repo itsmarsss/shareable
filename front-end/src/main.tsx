@@ -11,12 +11,14 @@ import LandingPage from "./pages/landingPage";
 import Layout from "./components/layout";
 import PrivateRoute from "./components/privateRoute";
 import { AuthProvider } from "./components/privateRoute/AuthProvider";
+import SignUp from "./pages/signUp";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="/sign-up" element={<SignUp />} />
           <Route path="/" element={<LandingPage />} />
           <Route element={<PrivateRoute />}>
             <Route element={<Layout />}>
