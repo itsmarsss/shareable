@@ -4,8 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "devStart": "nodemon server.js"
+        "build": "npx tsc",
+        "start": "node dist/index.js",
+        "dev": "nodemon src/server.ts"
     },
     "dependencies": {
         "cohere-ai": "^7.7.5",
@@ -16,6 +17,10 @@
         "mongodb": "^6.3.0"
     },
     "devDependencies": {
-        "nodemon": "^3.0.3"
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
+        "@types/node": "^22.1.0",
+        "nodemon": "^3.0.3",
+        "typescript": "^5.5.4"
     }
 }
