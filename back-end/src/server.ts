@@ -30,7 +30,7 @@ const startServer = async () => {
     }
 
     app.use("/api/profile", profileRouter);
-    app.use("/api/marketplace", marketplaceRouter);
+    app.use("/api/markelplace", marketplaceRouter);
 
     app.get("/*", function (req: Request, res: Response) {
         res.sendFile(path.join(__dirname, "..", "build", "index.html"));
