@@ -11,18 +11,18 @@ import LandingPage from "./pages/landingPage";
 import Layout from "./components/layout";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <Routes>
-                <Route element={<Layout />}>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/search" element={<Search />} />
-                    <Route path="/create" element={<Create />} />
-                    <Route path="*" element={<PageNotFound />} />
-                </Route>
-            </Routes>
-        </BrowserRouter>
-    </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route element={<Layout />}>
+          <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
 );
