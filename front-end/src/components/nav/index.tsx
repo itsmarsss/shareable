@@ -1,7 +1,7 @@
 import "./style.css";
 
 const Nav = () => {
-    return <></>;
+    return <>navbar</>;
 };
 
 export default Nav;

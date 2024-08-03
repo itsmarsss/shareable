@@ -1,0 +1,12 @@
+button {
+  padding: 10px 20px; /* Adjust padding for button size */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners */
+  background-color: var(--dark-green); /* Blue background color */
+  color: white; /* White text color */
+  font-size: 16px; /* Font size for text */
+  font-family: Arial, sans-serif; /* Font family */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  text-align: center; /* Center text inside the button */
+}
