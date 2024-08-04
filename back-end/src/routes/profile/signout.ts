@@ -3,27 +3,27 @@ import { mongoClient } from "../../api/mongodb";
 import { userCollection, userDatabase } from "../../dotenv";
 
 router.post("/signout", async (req, res) => {
-    const authHeader = req.headers["authorization"];
-
-    if (!authHeader) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
-    const token = authHeader.split(" ")[1];
-
-    if (!token) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
     try {
+        const authHeader = req.headers["authorization"];
+
+        if (!authHeader) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
+        const token = authHeader.split(" ")[1];
+
+        if (!token) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
         const db = mongoClient.db(userDatabase);
         const collection = db.collection(userCollection);
 

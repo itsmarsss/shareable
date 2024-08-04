@@ -17,12 +17,7 @@ router.put("/edit", async (req, res) => {
             });
             return;
         }
-    } catch (error) {
-        console.error("Error editing user:", error);
-        res.status(500).send("Internal Server Error");
-    }
 
-    try {
         const db = mongoClient.db(userDatabase);
         const collection = db.collection(userCollection);
 

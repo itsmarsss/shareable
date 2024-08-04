@@ -9,55 +9,55 @@ import Shareable from "../../objects/shareable";
 import { router } from "./index";
 
 router.post("/upload", async (req, res) => {
-    const authHeader = req.headers["authorization"];
-
-    if (!authHeader) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
-    const token = authHeader.split(" ")[1];
-
-    if (!token) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
-    const name = req.body.name;
-    const description = req.body.description;
-    const date = req.body.date;
-    const images = req.body.images;
-    const price = req.body.price;
-    const shareCount = req.body.shareCount;
-    const shareHolders = req.body.shareHolders;
-    const location = req.body.location;
-
-    if (
-        !(
-            name &&
-            description &&
-            date &&
-            images &&
-            price &&
-            shareCount &&
-            shareHolders &&
-            location
-        )
-    ) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
     try {
+        const authHeader = req.headers["authorization"];
+
+        if (!authHeader) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
+        const token = authHeader.split(" ")[1];
+
+        if (!token) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
+        const name = req.body.name;
+        const description = req.body.description;
+        const date = req.body.date;
+        const images = req.body.images;
+        const price = req.body.price;
+        const shareCount = req.body.shareCount;
+        const shareHolders = req.body.shareHolders;
+        const location = req.body.location;
+
+        if (
+            !(
+                name &&
+                description &&
+                date &&
+                images &&
+                price &&
+                shareCount &&
+                shareHolders &&
+                location
+            )
+        ) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
         const userDb = mongoClient.db(userDatabase);
         const userCol = userDb.collection(userCollection);
 

@@ -13,27 +13,27 @@ import { userCollection, userDatabase } from "../../dotenv";
 router.use(authorization);
 
 router.get("/", async (req, res) => {
-    const authHeader = req.headers["authorization"];
-
-    if (!authHeader) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
-    const userToken = authHeader.split(" ")[1];
-
-    if (!userToken) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
     try {
+        const authHeader = req.headers["authorization"];
+
+        if (!authHeader) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
+        const userToken = authHeader.split(" ")[1];
+
+        if (!userToken) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
         const db = mongoClient.db(userDatabase);
         const collection = db.collection(userCollection);
 
@@ -61,17 +61,17 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:username", async (req, res) => {
-    const username = req.params.username;
-
-    if (!username) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
     try {
+        const username = req.params.username;
+
+        if (!username) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
         const db = mongoClient.db(userDatabase);
         const collection = db.collection(userCollection);
 

@@ -7,34 +7,37 @@ import User from "../../objects/user";
 
 // sign up a user
 router.post("/signup", async (req, res) => {
-    const displayName = req.body.displayName;
-    const username = req.body.username;
-    const password = req.body.password;
-
-    if (!(displayName && username && password)) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     try {
+        const displayName = req.body.displayName;
+        const username = req.body.username;
+        const password = req.body.password;
+
+        if (!(displayName && username && password)) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         const db = mongoClient.db(userDatabase);
         const collection = db.collection(userCollection);
 
         const existingUser = await collection.findOne({
             username: username.toLowerCase(),
         });
+
         if (existingUser) {
             return res.json({
                 success: false,
                 message: "Username already exists",
             });
         }
+
         const token = randomBytes(20).toString("hex");
+
         const userData: User = {
             displayName: displayName,
             username: username,
