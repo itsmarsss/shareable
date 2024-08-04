@@ -1,10 +1,11 @@
 import express from "express";
+import { authorization } from "../../authorization";
 
 export const router = express.Router();
 
 import "./signin";
 
-// router.use(authorization);
+router.use(authorization);
 
 router.get("/", async (req, res) => {
     res.status(200).send("ok");
