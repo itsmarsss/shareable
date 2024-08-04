@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { mongoClient } from "./api/mongodb";
-import { USER_DATABASE, USER_COLLECTION } from "./dotenv";
+import { userCollection, userDatabase } from "./dotenv";
 
 export async function authorization(
     req: Request,
@@ -26,8 +26,8 @@ export async function authorization(
         }
 
         try {
-            const db = mongoClient.db(USER_DATABASE);
-            const collection = db.collection(USER_COLLECTION);
+            const db = mongoClient.db(userDatabase);
+            const collection = db.collection(userCollection);
 
             const user = await collection.findOne({
                 userToken: userToken,
