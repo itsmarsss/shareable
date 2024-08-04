@@ -1,63 +1,65 @@
-#root {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-}
-
 .panel-log-in-background {
-  background-color: var(--light-green);
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background-color: var(--light-green);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .panel-log-in {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: white;
-  height: 80%;
-  width: 90%;
-  margin: 0 2em;
-  border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: calc(92% - 1em);
+    border-radius: 4px;
+    padding: 1em 0.5em;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    border-radius: 2em;
+}
+
+#landing-page-welcome-h1 {
+    margin-bottom: 2em;
 }
 
 .user-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-div-landing-page {
-  width: 80%;
-}
-
-#img-landing-page {
-  height: 80px;
-  width: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .or-hr {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
 }
 
 .or-hr > *:nth-child(1) {
-  height: 1px;
-  flex: 1 1 33%;
+    height: 1px;
+    flex: 1 1 33%;
 }
 
 .or-hr > *:nth-child(2) {
-  flex: 1 1 33%;
+    flex: 1 1 33%;
 }
 
 .or-hr > *:nth-child(3) {
-  height: 1px;
-  flex: 1 1 33%;
+    height: 1px;
+    flex: 1 1 33%;
+}
+
+#landing-page-login-button {
+    margin-top: 1em;
+}
+
+#landing-page-signup-button {
+    padding: 0;
+    padding-left: 5px;
+    background-color: transparent;
+    font-size: 16px;
+    color: var(--light-green);
 }
