@@ -1,14 +1,14 @@
-import express from "express";
+import { router } from "./index";
 const { mongoClient } = require("../api/mongodb");
+const cryptoRandomString = require('crypto-random-string');
 
-const router = express.Router();
 
 const userDatabase = "Shareable";
 const userCollection = "Users";
-const uri = 4;
 
 // sign up a user
 router.post("/signup", async (req, res) => {
+  console.log("HELLOW WORLD");
   const username = req.body.name;
   const password = req.body.password;
 
@@ -33,14 +33,17 @@ router.post("/signup", async (req, res) => {
         message: "Same username",
       });
     }
+    const token = cryptoRandomString({length: 48, type: 'base64'});
     const userData = {
       username: username,
       password: password,
+      token: token,
       network: [],
     };
     const result = await collection.insertOne({ ...userData });
     res.json({
       success: true,
+      ...token,
       ...userData,
       ...result,
     });

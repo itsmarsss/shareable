@@ -29,7 +29,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
   const signIn = async (username: string, password: string) => {
     try {
-      const response = await fetch("/api/login", {
+      
+      const response = await fetch("/api/profile/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,14 +40,17 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
           password: password,
         }),
       });
+      console.log("fetch just ran a second a go " + response);
       const res = await response.json();
-
-      if (res.data.success) {
-        setUser(res.data.user);
+      console.log(res);
+      if (res.success) {
+        console.log("result found");
+        // setUser(res.user);
         setToken(res.token);
         localStorage.setItem("token", res.token);
 
         navigate("/home");
+        return;
       }
 
       throw new Error(res.message);

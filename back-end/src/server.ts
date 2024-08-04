@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import path from "path";
 import { PORT } from "./dotenv";
+import { initialize } from "./api/mongodb";
 
 const startServer = async () => {
   const app = express();
@@ -42,6 +43,7 @@ const startServer = async () => {
   app.listen(PORT);
 
   console.log(`Server started on port ${PORT} [http://localhost:${PORT}]`);
+  initialize();
 };
 
 startServer();
