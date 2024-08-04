@@ -41,7 +41,7 @@ const LandingPage = () => {
                     onChange={handleChange}
                     id="username-input"
                     className="user-info"
-                    placeholder="Enter Uername"
+                    placeholder="Enter Username"
                 />
                 <Input
                     value={password}
