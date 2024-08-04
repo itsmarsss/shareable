@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Header from "../../components/header";
+import BlogPost from "../../components/blogPost";
 import "./style.css";
 
 const Home = () => {
@@ -8,13 +8,14 @@ const Home = () => {
 
         return () => {
             document.getElementById("home")?.classList.remove("selected-icon");
-        }
-    })
+        };
+    });
 
-    
-    return <>
-    <Header />
-    </>;
+    return (
+        <>
+            <BlogPost />
+        </>
+    );
 };
 
 export default Home;

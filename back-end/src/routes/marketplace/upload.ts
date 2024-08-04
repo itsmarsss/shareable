@@ -6,6 +6,7 @@ import {
     userDatabase,
 } from "../../dotenv";
 import Shareable from "../../objects/shareable";
+import User from "../../objects/user";
 import { router } from "./index";
 
 router.post("/upload", async (req, res) => {
@@ -61,9 +62,9 @@ router.post("/upload", async (req, res) => {
         const userDb = mongoClient.db(userDatabase);
         const userCol = userDb.collection(userCollection);
 
-        const existingUser = await userCol.findOne({
+        const existingUser: User | null = (await userCol.findOne({
             token: token,
-        });
+        })) as User | null;
         if (!existingUser) {
             return res.json({
                 success: false,
