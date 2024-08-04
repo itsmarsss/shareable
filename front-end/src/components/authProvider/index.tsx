@@ -36,7 +36,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     const [user, setUser] = useState<undefined | User>(undefined);
     const [token, setToken] = useState(
         localStorage.getItem("token") || ""
-    ); // replace 'token' with '' for production
+    );
     const navigate = useNavigate();
 
     const signIn = async (username: string, password: string) => {

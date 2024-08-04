@@ -16,3 +16,12 @@
     outline: none;
     box-shadow: 0 0 4px var(--dark-green);
 }
+
+.query-result {
+    background-color: var(--white);
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 2px 4px;
+    display: flex;
+    justify-content: space-between;
+}
