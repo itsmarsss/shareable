@@ -1,10 +1,5 @@
 import { mongoClient } from "../../api/mongodb";
-import {
-    shareableCollection,
-    shareableDatabase,
-    userCollection,
-    userDatabase,
-} from "../../dotenv";
+import { userCollection, userDatabase } from "../../dotenv";
 import User from "../../objects/user";
 import { router } from "./index";
 
@@ -44,12 +39,25 @@ router.get("/feed", async (req, res) => {
             });
         }
 
-        existingUser.network.map((user) => {
-            console.log(user);
+        let friendShareables: string[] = [];
+
+        const friendPromises = existingUser.network.map(async (username) => {
+            const friendUser: User | null = (await userCol.findOne({
+                username,
+            })) as User | null;
+            if (friendUser) {
+                friendShareables = friendShareables.concat(
+                    friendUser.shareables
+                );
+            }
         });
 
-        const shareableDb = mongoClient.db(shareableDatabase);
-        const shareableCol = shareableDb.collection(shareableCollection);
+        await Promise.all(friendPromises);
+
+        return res.json({
+            success: true,
+            shareables: friendShareables,
+        });
     } catch (error) {
         console.error("Error getting feed", error);
         res.status(500).send("Internal Server Error");
