@@ -28,6 +28,7 @@ const Create = () => {
         shareCount: 0,
         shareHolders: [],
         location: "",
+        ownerUsername: "",
     });
 
     const auth = useAuth();

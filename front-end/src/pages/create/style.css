@@ -10,3 +10,9 @@
     overflow-y: auto;
     flex-grow: 1;
 }
+
+.container > .content textarea {
+    display: block;
+    width: 329px;
+    padding: 10px;
+}
