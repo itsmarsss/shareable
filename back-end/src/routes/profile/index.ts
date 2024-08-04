@@ -48,7 +48,7 @@ router.get("/", async (req, res) => {
             });
         }
 
-        const { network, hashedPassword, token, ...sanitizedUser } =
+        const { pending, network, hashedPassword, token, ...sanitizedUser } =
             existingUser;
 
         res.json({
@@ -86,7 +86,7 @@ router.get("/:username", async (req, res) => {
             });
         }
 
-        const { network, hashedPassword, token, ...sanitizedUser } =
+        const { pending, network, hashedPassword, token, ...sanitizedUser } =
             existingUser;
 
         res.json({
