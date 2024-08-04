@@ -47,7 +47,6 @@ router.post("/signup", async (req, res) => {
         res.json({
             success: true,
             ...userData,
-            ...result,
         });
     } catch (error) {
         console.error("Error adding user", error);
