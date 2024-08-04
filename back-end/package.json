@@ -9,6 +9,7 @@
         "dev": "nodemon"
     },
     "dependencies": {
+        "bcryptjs": "^2.4.3",
         "cohere-ai": "^7.7.5",
         "cors": "^2.8.5",
         "dotenv": "^16.4.1",
@@ -17,6 +18,7 @@
         "mongodb": "^6.3.0"
     },
     "devDependencies": {
+        "@types/bcryptjs": "^2.4.6",
         "@types/cors": "^2.8.17",
         "@types/express": "^4.17.21",
         "@types/node": "^22.1.0",

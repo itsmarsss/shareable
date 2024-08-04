@@ -1,7 +1,6 @@
 export default interface User {
-    username: string;
+    username: string; // unique
     displayName: string;
-    // pfpUrl: string;
-    // followingList: string;
-    // followerList: string;
+    profileB64: string; // base 64
+    network: string[]; // string of usernames
 }

@@ -31,10 +31,6 @@ const NavIcon: React.FC<NavIconProps> = ({
 };
 
 const Nav = () => {
-  const auth = useAuth();
-  const user = auth.user;
-
-  console.log(auth);
   return (
     <nav className="bottom-nav">
       <NavIcon size={24} id="home" href="/home" title="Home" icon={MdHome} />

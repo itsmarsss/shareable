@@ -2,45 +2,57 @@ import { router } from "./index";
 import { mongoClient } from "../../api/mongodb";
 import { randomBytes } from "crypto";
 import { userCollection, userDatabase } from "../../dotenv";
+import * as bcrypt from "bcryptjs";
+import User from "../../objects/user";
 
 // sign up a user
 router.post("/signup", async (req, res) => {
-    const username = req.body.name;
-    const password = req.body.password;
-
-    if (!(username && password)) {
-        res.json({
-            success: false,
-            message: "Insufficient data",
-        });
-        return;
-    }
-
     try {
+        const displayName = req.body.displayName;
+        const username = req.body.username;
+        const password = req.body.password;
+
+        if (!(displayName && username && password)) {
+            res.json({
+                success: false,
+                message: "Insufficient data",
+            });
+            return;
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
         const db = mongoClient.db(userDatabase);
         const collection = db.collection(userCollection);
 
         const existingUser = await collection.findOne({
             username: username.toLowerCase(),
         });
+
         if (existingUser) {
             return res.json({
                 success: false,
                 message: "Username already exists",
             });
         }
+
         const token = randomBytes(20).toString("hex");
-        const userData = {
+
+        const userData: User = {
+            displayName: displayName,
             username: username,
-            password: password,
+            hashedPassword: hashedPassword,
             token: token,
+            profileB64: "",
             network: [],
+            shareables: [],
         };
+
         const result = await collection.insertOne({ ...userData });
+
         res.json({
             success: true,
             ...userData,
-            ...result,
         });
     } catch (error) {
         console.error("Error adding user", error);

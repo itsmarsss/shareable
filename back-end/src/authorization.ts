@@ -8,8 +8,8 @@ export async function authorization(
     next: () => void
 ) {
     if (
-        req.originalUrl === "/api/user/signup" ||
-        req.originalUrl === "/api/user/signin"
+        req.originalUrl === "/api/profile/signup" ||
+        req.originalUrl === "/api/profile/signin"
     ) {
         next();
         return;
@@ -18,9 +18,9 @@ export async function authorization(
     const authHeader = req.headers["authorization"];
     console.log(authHeader);
     if (authHeader) {
-        const userToken = authHeader.split(" ")[1];
+        const token = authHeader.split(" ")[1];
 
-        if (userToken === "admin") {
+        if (token === "admin") {
             next();
             return;
         }
@@ -30,7 +30,7 @@ export async function authorization(
             const collection = db.collection(userCollection);
 
             const user = await collection.findOne({
-                userToken: userToken,
+                token: token,
             });
             if (!user) {
                 return res.status(401).json({

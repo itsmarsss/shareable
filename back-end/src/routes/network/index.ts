@@ -3,6 +3,11 @@ import { authorization } from "../../authorization";
 
 export const router = express.Router();
 
+import "./add";
+import "./message";
+import "./remove";
+import "./search";
+
 router.use(authorization);
 
 router.get("/", async (req, res) => {
