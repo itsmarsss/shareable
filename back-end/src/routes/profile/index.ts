@@ -2,6 +2,8 @@ import express from "express";
 
 export const router = express.Router();
 
+import "./signin";
+
 // router.use(authorization);
 
 router.get("/", async (req, res) => {
