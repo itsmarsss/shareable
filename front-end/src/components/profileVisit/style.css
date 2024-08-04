@@ -1,0 +1,55 @@
+.profile-visit-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.profile-visit-details {
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.profile-visit-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-visit-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-visit-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-visit-username {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profile-visit-bio {
+    font-size: 16px;
+    color: #666;
+}
+
+.profile-visit-action-btn {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+}
