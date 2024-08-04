@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap");
 
 :root {
-    font-family: "DM Sans", Inter;
+  font-family: "DM Sans", Inter;
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-    --light-green: #73B298; /* background color */
-    --green: #358C69;
-    --dark-green: #01411F;
-    --light-gray: #F7F4F4;
-    --gray: #a9a9a9;
-    --white: #fff;
+  --light-green: #73b298; /* background color */
+  --green: #358c69;
+  --dark-green: #01411f;
+  --light-gray: #f7f4f4;
+  --gray: #a9a9a9;
+  --white: #fff;
 }
 
 body {
-    margin: 0;
-    width: 100vw;
-    min-height: 100dvh;
+  margin: 0;
+  width: 100vw;
+  min-height: 100dvh;
 }

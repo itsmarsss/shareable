@@ -1,10 +1,10 @@
 button {
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
-  background-color: var(--dark-green);
-  color: white;
-  font-size: 16px;
+  border-radius: 2em;
+  background-color: var(--light-green);
+  color: var(--dark-green);
+  font-size: 13px;
   font-family: Arial, sans-serif;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;

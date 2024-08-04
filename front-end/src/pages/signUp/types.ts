@@ -1,6 +1,5 @@
 export interface State {
-  firstName: string;
-  lastName: string;
+  displayName: string;
   userName: string;
   email: string;
   password: string;
@@ -8,8 +7,7 @@ export interface State {
 }
 
 export type Action =
-  | { type: "change_first_name"; payload: string }
-  | { type: "change_last_name"; payload: string }
+  | { type: "change_display_name"; payload: string }
   | { type: "change_username"; payload: string }
   | { type: "change_email"; payload: string }
   | { type: "set_password"; payload: string }

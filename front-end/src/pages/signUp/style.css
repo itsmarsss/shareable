@@ -1,16 +1,19 @@
 .panel {
   display: flex;
-  width: calc(100% - 20px);
-  background-color: lightgray;
+  width: calc(100% - 1em);
   border-radius: 4px;
-  padding: 1em 10px;
-  margin: 1em 1em;
+  padding: 1em 0.5em;
+  margin: 1em;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: white;
 }
 
-.names {
-  display: flex;
-  flex-direction: row;
+#button-sign-up {
+  margin-top: 1em;
+}
+
+h2 {
+  font-weight: 200;
 }

@@ -3,13 +3,12 @@ import Input from "../../components/input";
 import Button from "../../components/button";
 import { useReducer } from "react";
 import { State, Action } from "./types";
+import icon from "../../../public/favicon.svg";
 
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
-    case "change_first_name":
-      return { ...state, firstName: action.payload };
-    case "change_last_name":
-      return { ...state, lastName: action.payload };
+    case "change_display_name":
+      return { ...state, displayName: action.payload };
     case "change_username":
       return { ...state, userName: action.payload };
     case "change_email":
@@ -25,8 +24,7 @@ const reducer = (state: State, action: Action) => {
 
 const SignUp = () => {
   const [state, dispatch] = useReducer(reducer, {
-    firstName: "",
-    lastName: "",
+    displayName: "",
     userName: "",
     email: "",
     password: "",
@@ -35,52 +33,51 @@ const SignUp = () => {
 
   return (
     <div className="panel">
+      <img src={icon} alt="" />
+      <h1>Create your account!</h1>
+      <h2>
+        Sign up to see postings from your environmental friendly neighbours!
+      </h2>
       <Input
-        value={state.firstName}
+        placeholder="Display Name"
+        value={state.displayName}
         onChange={(e) =>
-          dispatch({ type: "change_first_name", payload: e.target.value })
+          dispatch({ type: "change_display_name", payload: e.target.value })
         }
         className="names"
-        title="First Name:"
       />
       <Input
-        value={state.lastName}
-        onChange={(e) =>
-          dispatch({ type: "change_last_name", payload: e.target.value })
-        }
-        className="names"
-        title="Last Name:"
-      />
-      <Input
+        placeholder="Username"
         value={state.userName}
         onChange={(e) =>
           dispatch({ type: "change_username", payload: e.target.value })
         }
-        title="Set Username:"
       />
       <Input
+        placeholder="Email"
         value={state.email}
         onChange={(e) =>
           dispatch({ type: "change_email", payload: e.target.value })
         }
         id="email"
-        title="Email:"
       />
       <Input
+        placeholder="Password"
         value={state.password}
         onChange={(e) =>
           dispatch({ type: "set_password", payload: e.target.value })
         }
-        title="Set Password:"
       />
       <Input
+        placeholder="Confirm Password"
         value={state.confirmPassword}
         onChange={(e) =>
           dispatch({ type: "set_confirm_password", payload: e.target.value })
         }
-        title="Confirm Password:"
       />
-      <Button onClick={() => {}}>Sign Up</Button>
+      <Button onClick={() => {}} id="button-sign-up">
+        Sign Up
+      </Button>
     </div>
   );
 };
