@@ -25,7 +25,7 @@ const BlogPost: React.FC<BlogPostProp> = ({ shareable }) => {
         <div className="blog-post-background-panel">
             <h3 id="name-of-product-h3">{shareable.name}</h3>
             <div className="cost-share-location">
-                <p id="cost-of-product-p">${shareable.price.toPrecision(2)}</p>
+                <p id="cost-of-product-p">${shareable.price}</p>
                 <p id="shares-of-product-p">{shareable.shareCount - shareable.shareHolders.length}/{shareable.shareCount} shares left</p>
                 <p id="location-product-from-p">{shareable.location}</p>
             </div>
