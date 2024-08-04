@@ -6,4 +6,5 @@ export default interface User {
     token: string;
     network: string[];
     shareables: string[];
+    pending: string[];
 }
