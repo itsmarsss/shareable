@@ -110,7 +110,7 @@ router.post("/add/:username", async (req, res) => {
 
         return res.json({
             success: true,
-            message: "Friend request pendings",
+            message: "Friend request pending",
         });
     } catch (error) {
         console.error("Error querying user:", error);
