@@ -1,6 +1,7 @@
 import { router } from "./";
 import { mongoClient } from "../../api/mongodb";
 import { userCollection, userDatabase } from "../../dotenv";
+import * as bcrypt from "bcryptjs";
 
 // sign in a user
 router.post("/signin", async (req, res) => {
@@ -21,20 +22,31 @@ router.post("/signin", async (req, res) => {
 
         const existingUser = await collection.findOne({
             username: username,
-            password: password,
         });
         if (!existingUser) {
+            return res.json({
+                success: false,
+                message: "User does not exist",
+            });
+        }
+
+        const passwordMatch = await bcrypt.compare(
+            password,
+            existingUser.hashedPassword
+        );
+        if (!passwordMatch) {
             return res.json({
                 success: false,
                 message: "Incorrect username or password",
             });
         }
+
         res.json({
             success: true,
             token: existingUser.token,
             user: {
                 username: existingUser.username,
-                displayName: existingUser.username
+                displayName: existingUser.username,
             },
         });
     } catch (error) {

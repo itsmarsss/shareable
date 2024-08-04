@@ -4,6 +4,7 @@ import { authorization } from "../../authorization";
 export const router = express.Router();
 
 import "./signin";
+import "./signup";
 
 router.use(authorization);
 
