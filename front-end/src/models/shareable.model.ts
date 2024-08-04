@@ -8,4 +8,5 @@ export default interface Shareable {
     shareCount: number;
     shareHolders: string[];
     location: string;
+    ownerUsername: string;
 }

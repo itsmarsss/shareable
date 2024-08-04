@@ -1,6 +1,9 @@
 export default interface User {
-    username: string; // unique
     displayName: string;
-    profileB64: string; // base 64
-    network: string[]; // string of usernames
+    username: string;
+    hashedPassword: string;
+    profileB64: string;
+    token: string;
+    network: string[];
+    shareables: string[];
 }
