@@ -1,5 +1,8 @@
 import express from "express";
 import { authorization } from "../../authorization";
+import { mongoClient } from "../../api/mongodb";
+import { userCollection, userDatabase } from "../../dotenv";
+import User from "../../objects/user";
 
 export const router = express.Router();
 
@@ -7,9 +10,6 @@ import "./edit";
 import "./signin";
 import "./signout";
 import "./signup";
-import { mongoClient } from "../../api/mongodb";
-import { userCollection, userDatabase } from "../../dotenv";
-import User from "../../objects/user";
 
 router.use(authorization);
 

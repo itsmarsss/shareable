@@ -1,14 +1,15 @@
 import express from "express";
 import { authorization } from "../../authorization";
+import { mongoClient } from "../../api/mongodb";
+import { shareableCollection, shareableDatabase } from "../../dotenv";
+import Shareable from "../../objects/shareable";
 
 export const router = express.Router();
 
 import "./getFeed";
 import "./upload";
 import "./process-item-tag";
-import { mongoClient } from "../../api/mongodb";
-import { shareableCollection, shareableDatabase } from "../../dotenv";
-import Shareable from "../../objects/shareable";
+import "./take";
 
 router.use(authorization);
 

@@ -25,10 +25,10 @@ router.get("/feed", async (req, res) => {
             return;
         }
 
-        const userDb = mongoClient.db(userDatabase);
-        const userCol = userDb.collection(userCollection);
+        const db = mongoClient.db(userDatabase);
+        const collection = db.collection(userCollection);
 
-        const existingUser: User | null = (await userCol.findOne({
+        const existingUser: User | null = (await collection.findOne({
             token: token,
         })) as User | null;
 
@@ -40,14 +40,15 @@ router.get("/feed", async (req, res) => {
         }
 
         let friendShareables: string[] = [];
+        const existingUserNetwork = existingUser.network || [];
 
-        const friendPromises = existingUser.network.map(async (username) => {
-            const friendUser: User | null = (await userCol.findOne({
+        const friendPromises = existingUserNetwork.map(async (username) => {
+            const friendUser: User | null = (await collection.findOne({
                 username,
             })) as User | null;
             if (friendUser) {
                 friendShareables = friendShareables.concat(
-                    friendUser.shareables
+                    friendUser.shareables || []
                 );
             }
         });
