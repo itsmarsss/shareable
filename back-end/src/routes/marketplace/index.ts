@@ -3,6 +3,7 @@ import { authorization } from "../../authorization";
 
 export const router = express.Router();
 
+import "./getFeed";
 import "./upload";
 
 router.use(authorization);

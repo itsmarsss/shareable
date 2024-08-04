@@ -1,8 +1,9 @@
-import { router } from "./";
+import { router } from "./index";
 import { mongoClient } from "../../api/mongodb";
 import { userCollection, userDatabase } from "../../dotenv";
 import * as bcrypt from "bcryptjs";
 import { randomBytes } from "crypto";
+import User from "../../objects/user";
 
 // sign in a user
 router.post("/signin", async (req, res) => {
@@ -21,9 +22,10 @@ router.post("/signin", async (req, res) => {
         const db = mongoClient.db(userDatabase);
         const collection = db.collection(userCollection);
 
-        const existingUser = await collection.findOne({
+        const existingUser: User | null = (await collection.findOne({
             username: username,
-        });
+        })) as User | null;
+
         if (!existingUser) {
             return res.json({
                 success: false,
