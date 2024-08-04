@@ -41,7 +41,9 @@ router.post("/signup", async (req, res) => {
             token: token,
             network: [],
         };
+
         const result = await collection.insertOne({ ...userData });
+
         res.json({
             success: true,
             ...userData,

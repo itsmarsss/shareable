@@ -2,6 +2,7 @@ import { router } from "./";
 import { mongoClient } from "../../api/mongodb";
 import { userCollection, userDatabase } from "../../dotenv";
 import * as bcrypt from "bcryptjs";
+import { randomBytes } from "crypto";
 
 // sign in a user
 router.post("/signin", async (req, res) => {
@@ -41,13 +42,21 @@ router.post("/signin", async (req, res) => {
             });
         }
 
+        const token = randomBytes(20).toString("hex");
+
+        const token_data = {
+            token: token,
+        };
+
+        const result = await collection.updateOne(
+            { username: username },
+            { $set: token_data }
+        );
+
         res.json({
             success: true,
-            token: existingUser.token,
-            user: {
-                username: existingUser.username,
-                displayName: existingUser.username,
-            },
+            ...existingUser,
+            token,
         });
     } catch (error) {
         console.error("Error signing in", error);
