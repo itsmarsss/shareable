@@ -19,7 +19,7 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <>
-      <h2>{title}</h2>
+      {title ? <h2>{title}</h2> : null}
       <input
         value={value}
         onChange={onChange}

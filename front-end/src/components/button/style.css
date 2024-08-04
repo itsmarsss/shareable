@@ -5,7 +5,6 @@ button {
   background-color: var(--light-green);
   color: var(--dark-green);
   font-size: 13px;
-  font-family: Arial, sans-serif;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   text-align: center;

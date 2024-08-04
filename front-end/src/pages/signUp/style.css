@@ -11,13 +11,12 @@
 }
 
 .panel-sign-up {
-  overflow: auto; /* Allows scrolling if content overflows */
-  scrollbar-width: none; /* For Firefox */
+  overflow: auto;
+  scrollbar-width: none;
 }
 
-/* WebKit-based browsers (Chrome, Safari) */
 .panel-sign-up::-webkit-scrollbar {
-  display: none; /* Hides the scrollbar */
+  display: none;
 }
 
 #button-sign-up {

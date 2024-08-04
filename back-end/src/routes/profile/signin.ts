@@ -35,6 +35,10 @@ router.post("/signin", async (req, res) => {
         res.json({
             success: true,
             token: existingUser.token,
+            user: {
+                username: existingUser.username,
+                displayName: existingUser.username
+            },
         });
     } catch (error)
     {
