@@ -2,19 +2,23 @@ import { router } from "./index";
 import { mongoClient } from "../../api/mongodb";
 import { randomBytes } from "crypto";
 import { userCollection, userDatabase } from "../../dotenv";
+import * as bcrypt from "bcryptjs";
 
 // sign up a user
 router.post("/signup", async (req, res) => {
-    const username = req.body.name;
+    const displayName = req.body.displayName;
+    const username = req.body.username;
     const password = req.body.password;
 
-    if (!(username && password)) {
+    if (!(displayName && username && password)) {
         res.json({
             success: false,
             message: "Insufficient data",
         });
         return;
     }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     try {
         const db = mongoClient.db(userDatabase);
@@ -31,8 +35,9 @@ router.post("/signup", async (req, res) => {
         }
         const token = randomBytes(20).toString("hex");
         const userData = {
+            displayName: displayName,
             username: username,
-            password: password,
+            hashedPassword: hashedPassword,
             token: token,
             network: [],
         };
