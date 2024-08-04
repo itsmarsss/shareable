@@ -24,7 +24,7 @@ export const AuthContext = createContext<AuthContextType>({
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<undefined | User>(undefined);
-  const [token, setToken] = useState(localStorage.getItem("token") || ""); // replace 'token' with ''
+  const [token, setToken] = useState(localStorage.getItem("token") || "token"); // replace 'token' with ''
   const navigate = useNavigate();
 
   const signIn = async (username: string, password: string) => {
@@ -41,7 +41,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       });
       const res = await response.json();
 
-      if (res.data) {
+      if (res.data.success) {
         setUser(res.data.user);
         setToken(res.token);
         localStorage.setItem("token", res.token);

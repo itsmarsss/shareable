@@ -1,7 +1,8 @@
 import "./style.css";
 
 const PageNotFound = () => {
-    return <></>;
+    console.log("CRI");
+    return <>PAGE NOT FOUNDDD</>;
 };
 
 export default PageNotFound;
