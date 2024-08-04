@@ -54,11 +54,10 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             const res = await response.json();
 
             if (res.success) {
-                const user: User = res.user;
-                setUser(user);
+                setUser(res.user);
                 setToken(res.token);
                 localStorage.setItem("token", res.token);
-                console.log(user.username + " signed in.");
+                console.log(res + " signed in.");
 
                 navigate("/home");
                 return;
@@ -77,7 +76,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
         displayName: string
     ) => {
         try {
-            const response = await fetch("/api/sign-up", {
+            const response = await fetch("/api/profile/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -108,7 +107,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 
     const signOut = async () => {
         try {
-            const response = await fetch("/api/sign-out", {
+            const response = await fetch("/api/profile/signout", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

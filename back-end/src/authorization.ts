@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { mongoClient } from "./api/mongodb";
 import { userCollection, userDatabase } from "./dotenv";
+import User from "./objects/user";
 
 export async function authorization(
     req: Request,
@@ -29,9 +30,9 @@ export async function authorization(
             const db = mongoClient.db(userDatabase);
             const collection = db.collection(userCollection);
 
-            const user = await collection.findOne({
+            const user: User | null = (await collection.findOne({
                 token: token,
-            });
+            })) as User | null;
             if (!user) {
                 return res.status(401).json({
                     success: false,

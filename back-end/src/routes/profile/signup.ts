@@ -25,9 +25,9 @@ router.post("/signup", async (req, res) => {
         const db = mongoClient.db(userDatabase);
         const collection = db.collection(userCollection);
 
-        const existingUser = await collection.findOne({
+        const existingUser: User | null = (await collection.findOne({
             username: username.toLowerCase(),
-        });
+        })) as User | null;
 
         if (existingUser) {
             return res.json({
@@ -52,7 +52,7 @@ router.post("/signup", async (req, res) => {
 
         res.json({
             success: true,
-            ...userData,
+            user: userData,
         });
     } catch (error) {
         console.error("Error adding user", error);
