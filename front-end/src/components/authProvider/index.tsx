@@ -54,11 +54,10 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
             const res = await response.json();
 
             if (res.success) {
-                const user: User = res.user;
-                setUser(user);
+                setUser(res.user);
                 setToken(res.token);
                 localStorage.setItem("token", res.token);
-                console.log(user.username + " signed in.");
+                console.log(res.user.username + " signed in.");
 
                 navigate("/home");
                 return;
