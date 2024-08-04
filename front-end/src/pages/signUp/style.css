@@ -1,0 +1,19 @@
+.panel {
+  display: flex;
+  width: calc(100% - 1em);
+  border-radius: 4px;
+  padding: 1em 0.5em;
+  margin: 1em;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: white;
+}
+
+#button-sign-up {
+  margin-top: 1em;
+}
+
+h2 {
+  font-weight: 200;
+}
