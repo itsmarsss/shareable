@@ -1,9 +1,13 @@
 .outlet-layout {
     width: 100%;
-    height: calc(100dvh - 120px);
+    height: calc(100dvh - 85px);
 }
 
 .navbar-layout {
     width: 100%;
-    height: 120px;
+    height: 85px;
+}
+
+main {
+    width: 100vw;
 }

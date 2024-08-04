@@ -1,21 +1,23 @@
-import express from "express";
-const { MongoClient, ServerApiVersion } = require('mongodb');
+import { MongoClient, ServerApiVersion } from "mongodb";
+import { MONGO_URI } from "../dotenv";
 
-const uri = "mongodb+srv://williamwu277:<password>@shareable.omcl89m.mongodb.net/?retryWrites=true&w=majority&appName=Shareable";
+let mongoClient: MongoClient;
 
-let mongoClient = null;
+const mongoURI = process.env.MONGO_URI;
+console.log(mongoURI);
 
 const initialize = async () => {
-    mongoClient = new MongoClient(uri, {
-        serverApi: {
-            version: ServerApiVersion.v1,
-            strict: true,
-            deprecationErrors: true,
-        }
-    })
-    await mongoClient.connect();
-    console.log("MongoDB connected");
+  mongoClient = new MongoClient(MONGO_URI, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  });
+  await mongoClient.connect();
+  console.log("Connected to MongoDB");
 };
 
 initialize();
-module.exports = {mongoClient, initialize};
+
+export { mongoClient, initialize };
