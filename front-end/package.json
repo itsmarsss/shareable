@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "watch": "nodemon",
-    "build": "tsc -b && vite build && echo D | xcopy \"dist\\*\" \"../back-end/build\" /E /H /C /Y /D",
+    "build": "tsc -b && vite build && echo D | rsync -uav \"dist/\" \"../back-end/build\"",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

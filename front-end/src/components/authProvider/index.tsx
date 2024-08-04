@@ -45,7 +45,8 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       console.log(res);
       if (res.success) {
         console.log("result found");
-        // setUser(res.user);
+        setUser(res.user as User);
+        console.log(res.user);
         setToken(res.token);
         localStorage.setItem("token", res.token);
 
