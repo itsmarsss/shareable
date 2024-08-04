@@ -1,0 +1,16 @@
+.generic-pfp {
+    background-color: var(--white);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: clip;
+}
+
+.generic-pfp svg {
+    fill: var(--gray);
+    display: inline-block;
+    scale: 1.3;
+    padding-top: 20%;
+    border-radius: 100%;
+}

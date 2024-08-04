@@ -3,6 +3,7 @@ import "./style.css";
 import Header from "../../components/header";
 import { useAuth } from "../../components/authProvider";
 import Button from "../../components/button";
+import ProfileImage from "../../components/profileImage";
 
 const Profile = () => {
     useEffect(() => {
@@ -19,6 +20,7 @@ const Profile = () => {
     return <header>
         <Header />
         <h1>hello, {user?.displayName}</h1>
+        <ProfileImage profileB64="" size={100} />
         <Button onClick={auth.signOut}>
             Sign out
         </Button>
