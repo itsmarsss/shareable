@@ -1,4 +1,5 @@
 export default interface Shareable {
+    ownerUsername: string;
     id: string;
     name: string;
     description: string;
