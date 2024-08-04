@@ -1,8 +1,15 @@
+import { useEffect } from "react";
 import "./style.css";
 
 const Profile = () => {
-    return <header>
-    <h1>help</h1></header>;
+    useEffect(() => {
+        document.getElementById("profile")?.classList.add("selected-icon");
+
+        return () => {
+            document.getElementById("profile")?.classList.remove("selected-icon");
+        }
+    })
+    return <header></header>;
 };
 
 export default Profile;
