@@ -3,6 +3,8 @@ import { authorization } from "../../authorization";
 
 export const router = express.Router();
 
+import "./upload";
+
 router.use(authorization);
 
 router.get("/", async (req, res) => {

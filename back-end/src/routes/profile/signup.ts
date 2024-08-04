@@ -3,6 +3,7 @@ import { mongoClient } from "../../api/mongodb";
 import { randomBytes } from "crypto";
 import { userCollection, userDatabase } from "../../dotenv";
 import * as bcrypt from "bcryptjs";
+import User from "../../objects/user";
 
 // sign up a user
 router.post("/signup", async (req, res) => {
@@ -34,12 +35,13 @@ router.post("/signup", async (req, res) => {
             });
         }
         const token = randomBytes(20).toString("hex");
-        const userData = {
+        const userData: User = {
             displayName: displayName,
             username: username,
             hashedPassword: hashedPassword,
             token: token,
             network: [],
+            profileB64: "",
         };
 
         const result = await collection.insertOne({ ...userData });
