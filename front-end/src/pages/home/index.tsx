@@ -41,7 +41,7 @@ const Home = () => {
 
                 const res = await response.json();
                 if (res.success) {
-                    setPosts(prevPosts => [...prevPosts, res.shareableItem]);
+                    setPosts((prevPosts) => [...prevPosts, res.shareableItem]);
                 }
             });
         }
@@ -51,9 +51,16 @@ const Home = () => {
         <div className="container">
             <Header />
             <div className="content">
-                {posts.map((shareable, index) => (
-                    <BlogPost key={shareable.id + index} shareable={shareable} />
-                ))}
+                {posts.length > 0 ? (
+                    posts.map((shareable, index) => (
+                        <BlogPost
+                            key={shareable.id + index}
+                            shareable={shareable}
+                        />
+                    ))
+                ) : (
+                    <h2>No posts available</h2>
+                )}
             </div>
         </div>
     );
