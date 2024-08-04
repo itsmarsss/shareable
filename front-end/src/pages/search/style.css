@@ -1,0 +1,18 @@
+.input-field-search {
+    display: flex;
+    align-self: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--dark-green);
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.input-field-search:focus {
+    border-color: var(--dark-green);
+    outline: none;
+    box-shadow: 0 0 4px var(--dark-green);
+}

@@ -6,25 +6,38 @@ import Button from "../../components/button";
 import ProfileImage from "../../components/profileImage";
 
 const Profile = () => {
-    useEffect(() => {
-        document.getElementById("profile")?.classList.add("selected-icon");
-
-        return () => {
-            document.getElementById("profile")?.classList.remove("selected-icon");
-        }
-    })
-
     const auth = useAuth();
     const user = auth.user;
 
-    return <header>
-        <Header />
-        <h1>hello, {user?.displayName}</h1>
-        <ProfileImage profileB64="" size={100} />
-        <Button onClick={auth.signOut}>
-            Sign out
-        </Button>
-    </header>;
+    useEffect(() => {
+        const profileElement = document.getElementById("profile");
+        profileElement?.classList.add("selected-icon");
+
+        return () => {
+            profileElement?.classList.remove("selected-icon");
+        };
+    }, []);
+
+    return (
+        <div>
+            <Header />
+            <div className="profile-wrapper">
+                <div className="profile-section">
+                    <ProfileImage
+                        profileB64={user?.profileB64 || ""}
+                        size={100}
+                    />
+                    <div className="text-section">
+                        <h1 className="display-name">{user?.displayName}</h1>
+                        <h2 className="username">@{user?.username}</h2>
+                    </div>
+                </div>
+                <Button className="sign-out-button" onClick={auth.signOut}>
+                    Sign out
+                </Button>
+            </div>
+        </div>
+    );
 };
 
 export default Profile;

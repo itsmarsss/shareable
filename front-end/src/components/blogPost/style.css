@@ -67,7 +67,10 @@
 }
 
 #name-of-user-p {
+    background-color: transparent;
     color: var(--light-green);
+    padding: 0;
+    font-size: 16px;
 }
 
 #time-since-post-p {
