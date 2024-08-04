@@ -1,41 +1,85 @@
 .blog-post-background-panel {
+    width: calc(100% - 2em);
+    margin: 1em;
 }
 
 #name-of-product-p {
+    color: var(--dark-green);
+    font-size: 23px;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 0;
+    text-align: left;
+    font-family: "DM Serif Display", serif;
 }
 
 .cost-share-location {
+    color: var(--light-green);
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-self: center;
+    height: 50%;
+    margin: 0;
 }
 
 #cost-of-product-p {
+    margin: 0;
 }
 
 #shares-of-product-p {
+    font-style: disc;
+    display: list-item;
+    margin: 0;
+    margin-left: 1.45em;
 }
 
 #location-product-from-p {
+    color: var(--gray);
+    margin: 0;
+    margin-left: 0.5em;
 }
 
 #img-of-product {
+    width: 100%;
+    height: 17em;
+    margin-bottom: 1em;
+    border-radius: 5px;
 }
 
 .profile-share {
+    display: flex;
+    height: 2.7em;
+    margin-bottom: 0.3em;
 }
 
 #img-of-profile-picture {
+    width: 2.7em;
+    height: 2.7em;
+    flex: 1 1 10%;
 }
 
 .name-time {
+    margin-left: 0.8em;
+    flex: 1 1 50%;
+    align-content: center;
 }
 
 #name-of-user-p {
+    color: var(--light-green);
 }
 
 #time-since-post-p {
+    color: var(--gray);
+    font-size: 12px;
 }
 
 #ask-to-share-button {
+    flex: 1 1 35%;
+    height: 80%;
+    align-self: center;
 }
 
 #caption-of-image-p {
+    color: var(--dark-green);
 }

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import BlogPost from "../../components/blogPost";
 import "./style.css";
+import Header from "../../components/header";
 
 const Home = () => {
     useEffect(() => {
@@ -12,9 +13,13 @@ const Home = () => {
     });
 
     return (
-        <>
-            <BlogPost />
-        </>
+        <div className="container">
+            <Header />
+            <div className="content">
+                <BlogPost />
+                <BlogPost />
+            </div>
+        </div>
     );
 };
 

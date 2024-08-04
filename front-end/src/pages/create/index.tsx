@@ -15,7 +15,7 @@ const Create = () => {
         };
     });
 
-    let shareable: Shareable = {
+    const shareable: Shareable = {
         id: "",
         name: "",
         description: "",
@@ -24,7 +24,7 @@ const Create = () => {
         price: 0,
         shareCount: 0,
         shareHolders: [],
-        location: ""
+        location: "",
     };
 
     const handleUploadItemTag = (name: string, price: number) => {
@@ -32,10 +32,6 @@ const Create = () => {
         shareable.price = price;
         console.log(name + " " + price);
     };
-
-    const handleUploadShareable = () => {
-
-    }
 
     return (
         <div className="container">

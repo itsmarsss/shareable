@@ -5,7 +5,7 @@ import icon from "../../../public/favicon.svg";
 const BlogPost = () => {
     return (
         <div className="blog-post-background-panel">
-            <h3 id="name-of-product-p">Yukon Gold Potatoes 5lb. Bag</h3>
+            <h3 id="name-of-product-p">yukon gold potatoes 5lb. bag</h3>
             <div className="cost-share-location">
                 <p id="cost-of-product-p">$1.47</p>
                 <p id="shares-of-product-p">3/4 shares left</p>
