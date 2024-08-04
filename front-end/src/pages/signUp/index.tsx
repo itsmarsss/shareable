@@ -44,7 +44,6 @@ const SignUp = () => {
         onChange={(e) =>
           dispatch({ type: "change_display_name", payload: e.target.value })
         }
-        className="names"
       />
       <Input
         placeholder="Username"
