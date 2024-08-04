@@ -5,6 +5,7 @@ export const router = express.Router();
 
 import "./getFeed";
 import "./upload";
+import "./process-item-tag"
 
 router.use(authorization);
 

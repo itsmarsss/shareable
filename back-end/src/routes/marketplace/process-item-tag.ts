@@ -1,12 +1,23 @@
 import { router } from "./index";
-const { executePython } = require("../pythonExecutor");
 
-router.post("/upload", async (req, res) => {
+router.post("/process-item-tag", async (req, res) => {
 
     const image = req.body.image;
 
     try{
-        const result = await executePython("./scripts/imageToText.py", [image])
+        const spawn = require("child_process").spawn;
+        const pythonProcess = spawn('python3',["src/scripts/imageToText.py", image]);
+
+        let result;
+
+        pythonProcess.stdout.on('data', (data: any) => {
+            result = JSON.parse(data);
+        });
+
+        pythonProcess.stderr.on("data", (data: any) => {
+            console.error(`[python3] Error occured: ${data}`);
+        });
+
         console.log(result);
         res.json({
             success: true,
