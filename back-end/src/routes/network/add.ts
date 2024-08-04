@@ -55,6 +55,14 @@ router.post("/add/:username", async (req, res) => {
             });
         }
 
+        const sourceNetwork = sourceUser.network || [];
+        if (sourceNetwork.includes(username)) {
+            return res.json({
+                success: false,
+                message: "Already in your network",
+            });
+        }
+
         const destinationUser: User | null = (await collection.findOne({
             username: username,
         })) as User | null;
@@ -71,7 +79,6 @@ router.post("/add/:username", async (req, res) => {
             const destinationIndex = sourcePending.indexOf(username);
             sourcePending.splice(destinationIndex, 1);
 
-            const sourceNetwork = sourceUser.network || [];
             sourceNetwork.push(username);
 
             const sourceResult = await collection.updateOne(
