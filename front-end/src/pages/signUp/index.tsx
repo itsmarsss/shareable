@@ -98,6 +98,7 @@ const SignUp = () => {
                             payload: e.target.value,
                         })
                     }
+                    type="password"
                 />
                 <Input
                     placeholder="Confirm Password"
@@ -108,6 +109,7 @@ const SignUp = () => {
                             payload: e.target.value,
                         })
                     }
+                    type="password"
                 />
                 <Button onClick={handleSubmit} id="button-sign-up">
                     Sign Up

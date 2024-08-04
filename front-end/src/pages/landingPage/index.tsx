@@ -49,6 +49,7 @@ const LandingPage = () => {
                     id="password-input"
                     className="user-info"
                     placeholder="Enter Password"
+                    type="password"
                 />
                 <Button id="landing-page-login-button" onClick={handleSubmit}>
                     Log in

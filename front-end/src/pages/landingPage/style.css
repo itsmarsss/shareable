@@ -41,6 +41,7 @@
 .or-hr > *:nth-child(1) {
     height: 1px;
     flex: 1 1 33%;
+    margin: 2em 0;
 }
 
 .or-hr > *:nth-child(2) {
@@ -62,4 +63,8 @@
     background-color: transparent;
     font-size: 16px;
     color: var(--light-green);
+}
+
+#password-input {
+    margin-bottom: 3em;
 }
