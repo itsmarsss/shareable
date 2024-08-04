@@ -101,7 +101,7 @@ router.post("/upload", async (req, res) => {
 
         const user_result = await userCol.updateOne(
             { token: token },
-            { $set: { shareable: shareable_data } }
+            { $set: { shareables: shareable_data } }
         );
 
         res.json({
