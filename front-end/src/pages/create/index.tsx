@@ -79,6 +79,7 @@ const Create = () => {
         reader.readAsDataURL(selectedFile);
     };
     const handleSubmit = async () => {
+        handleFileUpload();
         try {
             console.log("1");
             const response = await fetch("/api/marketplace/upload", {
@@ -168,7 +169,6 @@ const Create = () => {
                             capture="environment"
                             onChange={handleFileChange}
                         />
-                        <Button onClick={handleFileUpload}>Upload</Button>
                         {uploadStatus && <p>{uploadStatus}</p>}
                     </div>
                     <button onClick={handleSubmit}>Submit</button>
