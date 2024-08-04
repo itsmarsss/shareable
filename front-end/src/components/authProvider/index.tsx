@@ -3,112 +3,146 @@ import User from "../../models/user.model";
 import { useNavigate } from "react-router-dom";
 
 interface AuthContextType {
-  user: User | undefined;
-  token: string;
-  signIn: (username: string, password: string) => Promise<void>;
-  signUp: (username: string, password: string, displayName: string) => Promise<void>;
-  signOut: () => void;
+    user: User | undefined;
+    token: string;
+    signIn: (username: string, password: string) => Promise<void>;
+    signUp: (
+        username: string,
+        password: string,
+        displayName: string
+    ) => Promise<void>;
+    signOut: () => void;
 }
 
 interface AuthProviderProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 export const AuthContext = createContext<AuthContextType>({
-  user: undefined,
-  token: "",
-  signIn: async () => {console.log("uninitialized sign in")},
-  signUp: async () => {console.log("unintialized sign up")},
-  signOut: () => {console.log("uninitialized sign out")},
+    user: undefined,
+    token: "",
+    signIn: async () => {
+        console.log("uninitialized sign in");
+    },
+    signUp: async () => {
+        console.log("unintialized sign up");
+    },
+    signOut: () => {
+        console.log("uninitialized sign out");
+    },
 });
 
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<undefined | User>(undefined);
-  const [token, setToken] = useState(localStorage.getItem("token") || "token"); // replace 'token' with ''
-  const navigate = useNavigate();
+    const [user, setUser] = useState<undefined | User>(undefined);
+    const [token, setToken] = useState(
+        localStorage.getItem("token") || ""
+    ); // replace 'token' with '' for production
+    const navigate = useNavigate();
 
-  const signIn = async (username: string, password: string) => {
-    try {
-      
-      const response = await fetch("/api/profile/signin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
-      console.log("fetch just ran a second a go " + response);
-      const res = await response.json();
-      console.log(res);
-      if (res.success) {
-        console.log("result found");
-        setUser(res.user as User);
-        console.log(res.user);
-        setToken(res.token);
-        localStorage.setItem("token", res.token);
+    const signIn = async (username: string, password: string) => {
+        try {
+            const response = await fetch("/api/profile/signin", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                }),
+            });
+            const res = await response.json();
 
-        navigate("/home");
-        return;
-      }
+            if (res.success) {
+                const user: User = res.user;
+                setUser(user);
+                setToken(res.token);
+                localStorage.setItem("token", res.token);
+                console.log(user.username + " signed in.");
 
-      throw new Error(res.message);
-    } catch (err) {
-      console.error(err);
-    }
-    console.log("sign in");
-  };
+                navigate("/home");
+                return;
+            }
 
-  const signUp = async (
-    username: string,
-    password: string,
-    displayName: string
-  ) => {
-    try {
-      const response = await fetch("/api/sign-up", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          displayName: displayName,
-          password: password,
-        }),
-      });
-      const res = await response.json();
+            throw new Error(res.message);
+        } catch (err) {
+            console.error(err);
+        }
+        console.log("sign in");
+    };
 
-      if (res.data) {
-        setUser(res.data.user);
-        setToken(res.token);
-        localStorage.setItem("token", res.token);
+    const signUp = async (
+        username: string,
+        password: string,
+        displayName: string
+    ) => {
+        try {
+            const response = await fetch("/api/sign-up", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: username,
+                    displayName: displayName,
+                    password: password,
+                }),
+            });
+            const res = await response.json();
 
-        navigate("/home");
-      }
+            if (res.success) {
+                setUser(res.user);
+                setToken(res.token);
+                localStorage.setItem("token", res.token);
+                console.log(res.user.username + " signed in.");
 
-      throw new Error(res.message);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+                navigate("/home");
+                return;
+            }
 
-  const signOut = async () => {
-    localStorage.removeItem("token");
-    setUser(undefined);
-    setToken("");
-    navigate("/");
-  };
+            throw new Error(res.message);
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
-  return (
-    <AuthContext.Provider value={{ user, token, signIn, signUp, signOut }}>
-      {children}
-    </AuthContext.Provider>
-  );
+    const signOut = async () => {
+        try {
+            const response = await fetch("/api/sign-out", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    token: token,
+                }),
+            });
+            const res = await response.json();
+
+            if (res.success) {
+                localStorage.removeItem("token");
+                setUser(undefined);
+                setToken("");
+                navigate("/");
+                console.log(user?.username + " signed out.");
+
+                navigate("/");
+                return;
+            }
+
+            throw new Error(res.message);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    return (
+        <AuthContext.Provider value={{ user, token, signIn, signUp, signOut }}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
-// Custom hook for accessing the context
 export const useAuth = () => {
-  return useContext(AuthContext);
+    return useContext(AuthContext);
 };

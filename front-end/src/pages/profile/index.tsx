@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./style.css";
+import Header from "../../components/header";
 
 const Profile = () => {
     useEffect(() => {
@@ -9,7 +10,9 @@ const Profile = () => {
             document.getElementById("profile")?.classList.remove("selected-icon");
         }
     })
-    return <header></header>;
+    return <header>
+        <Header />
+    </header>;
 };
 
 export default Profile;

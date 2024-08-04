@@ -1,6 +1,7 @@
 .app-header {
     background-color: var(--light-green);
-    padding: 18px;
+    padding-top: 18px;
+    padding-bottom: 14px;
 }
 
 .app-header h1 {
