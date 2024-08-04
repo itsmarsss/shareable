@@ -14,14 +14,17 @@ def main():
 
     load_dotenv()
 
-    data = sys.argv[1]
+    #data = sys.argv
+    #print(json.dumps(data))
+
+    data = sys.argv[1][23:]
+    
     image = Image.open(BytesIO(base64.b64decode(data)))
     image_numpy = np.array(image)
-
+    
     reader = easyocr.Reader(['en'])
-    text = " ".join(list(reader.readtext(image_numpy, detail=0)))
-    print(text)
-
+    text = " ".join(reader.readtext(image=image_numpy, detail = 0))
+    
     co = cohere.Client(api_key=os.getenv('COHERE_KEY'))
 
     name = co.generate(
@@ -40,6 +43,7 @@ def main():
     print(json.dumps(result))
 
     sys.stdout.flush()
+    
 
 
 
