@@ -40,8 +40,9 @@ router.post("/signup", async (req, res) => {
             username: username,
             hashedPassword: hashedPassword,
             token: token,
-            network: [],
             profileB64: "",
+            network: [],
+            shareables: [],
         };
 
         const result = await collection.insertOne({ ...userData });

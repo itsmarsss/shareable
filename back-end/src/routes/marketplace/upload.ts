@@ -91,7 +91,17 @@ router.post("/upload", async (req, res) => {
             location: location,
         };
 
-        const result = await shareableCol.insertOne({ ...shareableData });
+        const shareable_result = await shareableCol.insertOne({
+            ...shareableData,
+        });
+
+        const shareable_data = existingUser.shareables || [];
+        shareable_data.push(id);
+
+        const user_result = await userCol.updateOne(
+            { token: token },
+            { $set: { shareable: shareable_data } }
+        );
 
         res.json({
             success: true,

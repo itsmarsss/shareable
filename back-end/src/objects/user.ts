@@ -5,4 +5,5 @@ export default interface User {
     profileB64: string;
     token: string;
     network: string[];
+    shareables: string[];
 }
