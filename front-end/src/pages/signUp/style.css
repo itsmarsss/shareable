@@ -1,6 +1,6 @@
-.panel {
+.panel-sign-up {
   display: flex;
-  width: calc(100% - 1em);
+  width: calc(92% - 1em);
   border-radius: 4px;
   padding: 1em 0.5em;
   margin: 1em;
@@ -8,6 +8,16 @@
   justify-content: center;
   text-align: center;
   background-color: white;
+}
+
+.panel-sign-up {
+  overflow: auto; /* Allows scrolling if content overflows */
+  scrollbar-width: none; /* For Firefox */
+}
+
+/* WebKit-based browsers (Chrome, Safari) */
+.panel-sign-up::-webkit-scrollbar {
+  display: none; /* Hides the scrollbar */
 }
 
 #button-sign-up {

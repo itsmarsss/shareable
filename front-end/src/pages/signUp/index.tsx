@@ -32,7 +32,7 @@ const SignUp = () => {
   });
 
   return (
-    <div className="panel">
+    <div className="panel-sign-up">
       <img src={icon} alt="" />
       <h1>Create your account!</h1>
       <h2>

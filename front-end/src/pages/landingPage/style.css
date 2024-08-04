@@ -1,16 +1,9 @@
-body {
-  background-color: var(--light-green);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.panel {
+.panel-log-in {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .user-info {

@@ -12,14 +12,14 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const auth = useAuth();
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (userName !== "" && password !== "") {
       auth.signIn(userName, password);
       return;
     }
-    alert("pleae provide a valid input");
-  }
+    alert("please provide a valid input");
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.target.id === "username-input"
@@ -32,27 +32,29 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="panel">
-      <h1>Welcome to our website (change later)</h1>
+    <div className="panel-log-in">
+      <h1 id="landing-page-welcome-h1">
+        Welcome to our website (change later)
+      </h1>
       <form onSubmit={handleSubmit}>
-      <Input
-        value={userName}
-        onChange={handleChange}
-        id="username-input"
-        className="user-info"
-      />
-      <Input
-        value={password}
-        onChange={handleChange}
-        id="password-input"
-        className="user-info"
-      />
-      <button id="login" type="submit">
-        Log in
-      </button>
-      <Button id="signup" onClick={NavigateSignUp}>
-        Sign Up
-      </Button>
+        <Input
+          value={userName}
+          onChange={handleChange}
+          id="username-input"
+          className="user-info"
+        />
+        <Input
+          value={password}
+          onChange={handleChange}
+          id="password-input"
+          className="user-info"
+        />
+        <button id="landing-page-login-button" type="submit">
+          Log in
+        </button>
+        <Button id="landing-page-signup-button" onClick={NavigateSignUp}>
+          Sign Up
+        </Button>
       </form>
     </div>
   );
