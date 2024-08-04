@@ -4,6 +4,7 @@ import Input from "../../components/input";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button";
 import { useAuth } from "../../components/authProvider";
+import icon from "../../../public/favicon.svg";
 
 const LandingPage = () => {
   const [userName, setUsername] = useState("");
@@ -32,30 +33,38 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="panel-log-in">
-      <h1 id="landing-page-welcome-h1">
-        Welcome to our website (change later)
-      </h1>
-      <form onSubmit={handleSubmit}>
-        <Input
-          value={userName}
-          onChange={handleChange}
-          id="username-input"
-          className="user-info"
-        />
-        <Input
-          value={password}
-          onChange={handleChange}
-          id="password-input"
-          className="user-info"
-        />
-        <button id="landing-page-login-button" type="submit">
-          Log in
-        </button>
-        <Button id="landing-page-signup-button" onClick={NavigateSignUp}>
-          Sign Up
-        </Button>
-      </form>
+    <div className="panel-log-in-background">
+      <div className="panel-log-in">
+        <img src={icon} id="img-landing-page" />
+        <h1 id="landing-page-welcome-h1">
+          Welcome to our website (change later)
+        </h1>
+        <form onSubmit={handleSubmit} className="form-div-landing-page">
+          <Input
+            value={userName}
+            onChange={handleChange}
+            id="username-input"
+            className="user-info"
+          />
+          <Input
+            value={password}
+            onChange={handleChange}
+            id="password-input"
+            className="user-info"
+          />
+          <div className="or-hr">
+            <hr className="hr-width"></hr>
+            <p>OR</p>
+            <hr className="hr-width"></hr>
+          </div>
+          <button id="landing-page-login-button" type="submit">
+            Log in
+          </button>
+          <Button id="landing-page-signup-button" onClick={NavigateSignUp}>
+            Sign Up
+          </Button>
+        </form>
+      </div>
     </div>
   );
 };
