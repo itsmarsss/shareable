@@ -1,0 +1,10 @@
+.app-header {
+    background-color: var(--light-green);
+    padding: 18px;
+}
+
+.app-header h1 {
+    font-family: "DM Serif Display";
+    text-align: center;
+    color: var(--white);
+}

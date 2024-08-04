@@ -4,7 +4,7 @@ import "./style.css";
 
 const Layout = () => {
   return (
-    <main>
+    <main className="main">
       <div className="outlet-layout">
         <Outlet />
       </div>

@@ -8,6 +8,10 @@
     height: 85px;
 }
 
-main {
+.main {
     width: 100vw;
+}
+
+main {
+    background-color: var(--light-gray);
 }
