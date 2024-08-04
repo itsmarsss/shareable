@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import "./style.css";
 import Header from "../../components/header";
-import ImageUpload from "../../components/itemTagImageUpload";
 import Shareable from "../../models/shareable.model";
 import { useAuth } from "../../components/authProvider";
 import { useNavigate } from "react-router-dom";
@@ -35,15 +34,6 @@ const Create = () => {
     const navigate = useNavigate();
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [uploadStatus, setUploadStatus] = useState<string>("");
-
-    const handleUploadItemTag = (name: string, price: number) => {
-        setShareable((prevData) => ({
-            ...prevData,
-            name: name,
-            price: price,
-        }));
-        console.log(name + " " + price);
-    };
 
     const handleChange = (
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -109,69 +99,69 @@ const Create = () => {
         <div className="container">
             <Header />
             <div className="content">
-                <label>Upload image of the price tag:</label>
-                <ImageUpload onUploadSuccess={handleUploadItemTag} />
-                    <div>
-                        <label>Item Name:</label>
-                        <input
-                            type="text"
-                            name="name"
-                            value={shareable.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Description:</label>
-                        <textarea
-                            name="description"
-                            value={shareable.description}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Price:</label>
-                        <input
-                            type="number"
-                            name="price"
-                            value={shareable.price}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Share Count:</label>
-                        <input
-                            type="number"
-                            name="shareCount"
-                            value={shareable.shareCount}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Purchased From Location:</label>
-                        <input
-                            type="text"
-                            name="location"
-                            value={shareable.location}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Upload Images:</label>
-                        <input
-                            type="file"
-                            accept="image/*"
-                            capture="environment"
-                            onChange={handleFileChange}
-                        />
-                        <Button onClick={handleFileUpload}>Upload</Button>
-                        {uploadStatus && <p>{uploadStatus}</p>}
-                    </div>
-                    <button onClick={handleSubmit}>Submit</button>
+                <div>
+                    <label>Item Name:</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={shareable.name}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Description:</label>
+                    <textarea
+                        name="description"
+                        value={shareable.description}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Price:</label>
+                    <input
+                        type="number"
+                        name="price"
+                        value={shareable.price}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Share Count:</label>
+                    <input
+                        type="number"
+                        name="shareCount"
+                        value={shareable.shareCount}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Purchased From Location:</label>
+                    <input
+                        type="text"
+                        name="location"
+                        value={shareable.location}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div>
+                    <label>Upload Images:</label>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        capture="environment"
+                        onChange={handleFileChange}
+                    />
+                    <Button onClick={handleFileUpload}>Upload</Button>
+                    {uploadStatus && <p>{uploadStatus}</p>}
+                    <button id="hehehe" onClick={handleSubmit}>
+                        Submit
+                    </button>
+                </div>
             </div>
         </div>
     );
