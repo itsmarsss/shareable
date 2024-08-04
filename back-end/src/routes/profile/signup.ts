@@ -46,6 +46,7 @@ router.post("/signup", async (req, res) => {
             profileB64: "",
             network: [],
             shareables: [],
+            pending: [],
         };
 
         const result = await collection.insertOne({ ...userData });
