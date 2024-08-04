@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./style.css";
+import Header from "../../components/header";
 
 const Create = () => {
     useEffect(() => {
@@ -9,7 +10,7 @@ const Create = () => {
             document.getElementById("create")?.classList.remove("selected-icon");
         }
     })
-    return <></>;
+    return <><Header /></>;
 };
 
 export default Create;
