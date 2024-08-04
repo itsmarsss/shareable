@@ -4,6 +4,7 @@ import Button from "../../components/button";
 import { useReducer } from "react";
 import { State, Action } from "./types";
 import icon from "../../../public/favicon.svg";
+import { useAuth } from "../../components/authProvider";
 
 const reducer = (state: State, action: Action) => {
   switch (action.type) {
@@ -11,8 +12,6 @@ const reducer = (state: State, action: Action) => {
       return { ...state, displayName: action.payload };
     case "change_username":
       return { ...state, userName: action.payload };
-    case "change_email":
-      return { ...state, email: action.payload };
     case "set_password":
       return { ...state, password: action.payload };
     case "set_confirm_password":
@@ -26,10 +25,25 @@ const SignUp = () => {
   const [state, dispatch] = useReducer(reducer, {
     displayName: "",
     userName: "",
-    email: "",
     password: "",
     confirmPassword: "",
   });
+
+  const auth = useAuth();
+
+  const handleSubmit = () => {
+    if (state.password !== state.confirmPassword) {
+      alert("Password does not match.");
+      return;
+    }
+
+    if (state.userName === "" || state.displayName === "" || state.password !== "" || state.confirmPassword !== "") {
+      alert("Please fill out all fields.");
+      return;
+    }
+
+    auth.signUp(state.userName, state.password, state.displayName);
+  };
 
   return (
     <div className="panel-sign-up">
@@ -53,14 +67,6 @@ const SignUp = () => {
         }
       />
       <Input
-        placeholder="Email"
-        value={state.email}
-        onChange={(e) =>
-          dispatch({ type: "change_email", payload: e.target.value })
-        }
-        id="email"
-      />
-      <Input
         placeholder="Password"
         value={state.password}
         onChange={(e) =>
@@ -74,7 +80,7 @@ const SignUp = () => {
           dispatch({ type: "set_confirm_password", payload: e.target.value })
         }
       />
-      <Button onClick={() => {}} id="button-sign-up">
+      <Button onClick={handleSubmit} id="button-sign-up">
         Sign Up
       </Button>
     </div>
