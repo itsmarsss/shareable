@@ -20,7 +20,9 @@ const BlogPost = () => {
             <div className="profile-share">
                 <img src={icon} id="img-of-profile-picture" />
                 <div className="name-time">
-                    <p id="name-of-user-p">Kenny Wu</p>
+                    <Button id="name-of-user-p" onClick={() => {}}>
+                        Kenny Wu
+                    </Button>
                     <p id="time-since-post-p">25 mins ago</p>
                 </div>
                 <Button id="ask-to-share-button" onClick={() => {}}>
